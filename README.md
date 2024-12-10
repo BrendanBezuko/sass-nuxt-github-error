@@ -1,5 +1,13 @@
-# A repo to isolate an error I had and play around to find the solution
+# Repository for Error Isolation and Solution Exploration
 
-## The solution
+# The Bug
 
-The issue was that I could not get the build run the SASS preprocessor correctly thus it throw errors about SASS varibles not being found. This was becasue the build system was injecting commands into the build process overriding the nuxt configuration where the sass was configured. Deleting this `target: 'static',  // Make sure target is set to static for static site generation` from the defualt nuxtjs pages Github action yml file solved the issue as the nuxt.config.js was now being correctly utilized by the build process.
+The issue arose when trying to upload a nuxt project to Github pages using the default Github Action called `NuxtJs`. The SASS preprocessor wasn't functioning correctly during the build, leading to errors indicating that SASS variables were not found. The root cause was the build system injecting commands into the build process, which overrode the Nuxt configuration, `nuxt.config.ts`, where SASS was properly set up.
+
+## The Solution
+
+To resolve this, I removed the following line from the default Nuxt.js Pages GitHub Action YAML file:
+
+`target: 'static'`
+
+By doing this, the `nuxt.config.ts` file was correctly utilized by the build process, and the SASS preprocessor began working as expected.
